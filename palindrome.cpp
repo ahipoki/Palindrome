@@ -3,6 +3,11 @@
 
 using namespace std;
 
+/*
+ Finn McKinley
+ 9/25/19
+ A program to determine whether or not a word/phrase is a palindrome
+*/
 int main()
 {
   int k, l, m, n = 0;
