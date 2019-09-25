@@ -10,6 +10,10 @@ int main()
   //Char array for input 80 chars at most
   char output[80];
   //Char array for output 80 chars
+  char temp[sizeof input];
+  //Temporary array to deal with punctuation and spaces
+  int temp_index = 0;
+  //Temporary int for the temp array
   cout << "Enter a phrase to test if it is a palindrome." << endl;
   //Tell the user to enter a phrase
   cin.getline(input, 80);
@@ -17,6 +21,16 @@ int main()
   cin.get();
   //Prevent garbage from going in the array
 
+  for (int i = 0; input[i]; i++) {
+    if (input[i] != ' ') {
+      temp[temp_index++] = input[i]; 
+    }
+  }
+  
+  temp[temp_index] = '\0';
+  
+  strcpy_s(input, sizeof(input), temp);
+  
   int i = strlen(input) - 1, j = 0;
   while (i >= 0) {//While loop for reversing the phrase
     output[j] = input[i];
@@ -31,20 +45,6 @@ int main()
     input[k] = tolower(input[k]);
     //Set any characters in the array as a lowercase
   }
-  
-  while (l <= strlen(input)) {
-    if (input[l] == ' ') {
-      cout << "Space" << endl;
-      l++;
-    }
-  }
-  
-  if (ispunct(input[l] == true)) {
-    //input[l] = input[m];
-    //output[m] = output[l];
-    cout << "Punct" << endl;
-  }
-  cout << output << endl;
   
   if (strcmp(input, output) == 0) {//If the two arrays are equal
     cout << "Palindrome" << endl;
