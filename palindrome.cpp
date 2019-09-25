@@ -18,33 +18,34 @@ int main()
   //Tell the user to enter a phrase
   cin.getline(input, 80);
   //Get the user's input and store it in input array
-  cin.get();
+  //cin.get();
   //Prevent garbage from going in the array
 
   for (int i = 0; input[i]; i++) {//Go through the input array
     if (input[i] != ' ') {//If the char is not a space
-      temp[temp_index++] = input[i]; 
-      //Add the char to the temporary array
+      if (ispunct(input[i] == false)) {
+	temp[temp_index++] = input[i]; 
+	//Add the char to the temporary array
+      }
     }
   }
-  
   temp[temp_index] = '\0';
   //Add a null-terminator to the temp array
   
-  strcpy_s(input, sizeof(input), temp);
+  strcpy(input, temp);
   //Copy the temporary array onto the input array
   
-  for (int j = 0; input[j]; j++) {//Go through the input array w/o spaces
-    if (ispunct(input) == false) {//If the char is not punctuation
-      temp[temp_index++] = input[j]; 
+  //for (int j = 0; input[j]; j++) {//Go through the input array w/o spaces
+  //if (ispunct(input[j]) == false) {//If the char is not punctuation
+  //temp[temp_index++] = input[j]; 
       //Add the char to the temp array
-    }
-  }
+  //}
+  //}
   
-  temp[temp_index] = '\0';
+  //temp[temp_index] = '\0';
   //Add a null-terminator to the temp array
   
-  strcpy_s(input, sizeof(input), temp);
+  //strcpy(input, temp);
   //Copy the temporary array onto the input array
   
   int i = strlen(input) - 1, j = 0;
