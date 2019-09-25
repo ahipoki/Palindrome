@@ -21,15 +21,31 @@ int main()
   cin.get();
   //Prevent garbage from going in the array
 
-  for (int i = 0; input[i]; i++) {
-    if (input[i] != ' ') {
+  for (int i = 0; input[i]; i++) {//Go through the input array
+    if (input[i] != ' ') {//If the char is not a space
       temp[temp_index++] = input[i]; 
+      //Add the char to the temporary array
     }
   }
   
   temp[temp_index] = '\0';
+  //Add a null-terminator to the temp array
   
   strcpy_s(input, sizeof(input), temp);
+  //Copy the temporary array onto the input array
+  
+  for (int j = 0; input[j]; j++) {//Go through the input array w/o spaces
+    if (ispunct(input) == false) {//If the char is not punctuation
+      temp[temp_index++] = input[j]; 
+      //Add the char to the temp array
+    }
+  }
+  
+  temp[temp_index] = '\0';
+  //Add a null-terminator to the temp array
+  
+  strcpy_s(input, sizeof(input), temp);
+  //Copy the temporary array onto the input array
   
   int i = strlen(input) - 1, j = 0;
   while (i >= 0) {//While loop for reversing the phrase
