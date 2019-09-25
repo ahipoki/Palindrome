@@ -26,6 +26,12 @@ int main()
     input[k] = tolower(input[k]);
   }
   
+  while (l <= strlen(input)) {
+    if (input[l] == ' ') {
+      cout << "Space" << endl;
+      l++;
+    }
+  }
   if (ispunct(input[l] == true)) {
     //input[l] = input[m];
     //output[m] = output[l];
